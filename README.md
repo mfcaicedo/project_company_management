@@ -1,10 +1,15 @@
 PROYECTO CICLO 3 MISIÓN TIC 
 Integrantes: 
-Milthon Ferney Caicedo Jurado - mfcaicedo - mfcaciedo@unicauca.edu.co
-Brandon Nicolas Bohórquez - bbohorquez08 - bbohorquez@unicauca.edu.co
-Sebastian Macias - Sebasmaciascode - Sebasmaciasq@gmail.com
-Javier Ramirez - javierramirez - javierramirez.m93@gmail.com
-Beatriz Gutierrez - beatrizgutica2@gmail.com
+Milthon Ferney Caicedo Jurado - 
+mfcaicedo - mfcaciedo@unicauca.edu.co
+Brandon Nicolas Bohórquez - 
+bbohorquez08 - bbohorquez@unicauca.edu.co
+Sebastian Macias - 
+Sebasmaciascode - Sebasmaciasq@gmail.com
+Javier Ramirez - 
+javierramirez - javierramirez.m93@gmail.com
+Beatriz Gutierrez - 
+beatrizgutica2@gmail.com
 
 Requerimiento:
 Se requiere un aplicativo web para que un administrador pueda gestionar los
@@ -22,3 +27,5 @@ Adicionalmente, debido a que las transacciones contables son
 supremamente delicadas, el sistema debería permitir llevar una trazabilidad
 de quién registró cada transacción, por lo cual el sistema debe contar con un
 sistema de autenticación.
+
+
