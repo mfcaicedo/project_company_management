@@ -4,7 +4,7 @@ Milthon Ferney Caicedo Jurado -
 mfcaicedo - mfcaciedo@unicauca.edu.co
 Brandon Nicolas Bohórquez - 
 bbohorquez08 - bbohorquez@unicauca.edu.co
-Sebastian Macias - 
+Sebastián Macías - 
 Sebasmaciascode - Sebasmaciasq@gmail.com
 Javier Ramirez - 
 javierramirez - javierramirez.m93@gmail.com
