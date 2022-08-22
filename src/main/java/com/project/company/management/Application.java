@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Application {
 
+	/**
+	 * Rama de desarrollo (development)
+	 * @param args
+	 */
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
