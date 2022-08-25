@@ -1,4 +1,4 @@
-package Object;
+package com.project.company.management.domain;
 
 public class Employee {
     private String email;
