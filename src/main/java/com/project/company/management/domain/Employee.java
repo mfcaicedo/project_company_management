@@ -1,22 +1,37 @@
 package com.project.company.management.domain;
 
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+@Entity
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String email;
     private String name;
-    private String enterprise;
-    private String role;
+    @OneToOne
+    @JoinColumn(name="profile_id")
+    private Profile profile;
 
-    private String telefono;
+    private List<String> role;
+
+    @ManyToOne
+    @JoinColumn(name="enterprise_id")
+    private Enterprise enterprise;
+
+    @OneToMany
+    @JoinColumn(name="transaction_id")
+    private List<Transaction> transaction;
+
+    private Date createdAt;
+    private Date updatedAt;
+
 
     public Employee() {
     }
 
-    public Employee(String email, String name, String enterprise, String role) {
-        this.email = email;
-        this.name = name;
-        this.enterprise = enterprise;
-        this.role = role;
-    }
 
     public String getEmail() {
         return email;
@@ -33,20 +48,20 @@ public class Employee {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getEnterprise() {
-        return enterprise;
-    }
-
-    public void setEnterprise(String enterprise) {
-        this.enterprise = enterprise;
-    }
-
-    public String getRole() {
+    public List<String> getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(List<String> role) {
         this.role = role;
     }
+
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
+
 }
