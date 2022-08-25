@@ -1,14 +1,18 @@
 package com.project.company.management.domain;
 
 public class Transaction {
-    //ATRIBUTOS
+    /**
+     * Atributos
+     */
 
     private String concept;
     private float amount;
     private Employee user;
 
 
-    //CONSTRUCTORES
+    /**
+     * Constructor
+     */
     public Transaction (){}
 
     public Transaction(String concept, float amount, Employee user) {
@@ -17,8 +21,10 @@ public class Transaction {
         this.user = user;
     }
 
-    //GETTERS AND SETTERS
-
+    /**
+     * Getters and setters
+     * @return
+     */
     public String getConcept() {
         return concept;
     }
@@ -43,6 +49,7 @@ public class Transaction {
         this.user = user;
     }
 
-
-    //METODOS U OPERACIONES
+    /**
+     * Métodos y opereaciones
+     */
 }
