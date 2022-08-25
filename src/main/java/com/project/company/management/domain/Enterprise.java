@@ -1,13 +1,19 @@
 package com.project.company.management.domain;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Enterprise {
-
     /**
      * Atributos
      */
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     private String name;
     private String document;
