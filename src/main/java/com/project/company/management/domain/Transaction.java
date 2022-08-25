@@ -1,33 +1,48 @@
 package com.project.company.management.domain;
 
-import java.io.Serializable;
+public class Transaction {
+    //ATRIBUTOS
 
-public class Transaction implements Serializable {
-    /**
-     * Param
-     */
-    private long id;
-    private String name;
-    private String document;
-    private String phone;
-    private String address;
-    private ArrayList<Employee> users; /*Es tipo de Employeed es una foranea*/
-    private ArrayList<Transaction> transactions; /*Foranea*/
-    private Date creatAt;
-    private Date updateAt;
+    private String concept;
+    private float amount;
+    private Employee user;
 
-    /**
-     * Constructor
-     */
-    public Transaction(long id, String name, String document, String phone, String address, ArrayList<Employee> users, ArrayList<Transaction> transactions, Date creatAt, Date updateAt) {
-        this.id = id;
-        this.name = name;
-        this.document = document;
-        this.phone = phone;
-        this.address = address;
-        this.users = users;
-        this.transactions = transactions;
-        this.creatAt = creatAt;
-        this.updateAt = updateAt;
+
+    //CONSTRUCTORES
+    public Transaction (){}
+
+    public Transaction(String concept, float amount, Employee user) {
+        this.concept = concept;
+        this.amount = amount;
+        this.user = user;
     }
+
+    //GETTERS AND SETTERS
+
+    public String getConcept() {
+        return concept;
+    }
+
+    public void setConcept(String concept) {
+        this.concept = concept;
+    }
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(float amount) {
+        this.amount = amount;
+    }
+
+    public Employee getUser() {
+        return user;
+    }
+
+    public void setUser(Employee user) {
+        this.user = user;
+    }
+
+
+    //METODOS U OPERACIONES
 }
