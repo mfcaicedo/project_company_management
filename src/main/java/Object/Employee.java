@@ -6,6 +6,8 @@ public class Employee {
     private String enterprise;
     private String role;
 
+    private String telefono;
+
     public Employee() {
     }
 
