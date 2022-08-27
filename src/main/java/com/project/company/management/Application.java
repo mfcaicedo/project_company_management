@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Application {
 
 	/**
-	 * Rama de desarrollo (development)
+	 * Rama de produccion main
 	 * @param args
 	 */
 
