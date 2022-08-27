@@ -1,8 +1,5 @@
 package com.project.company.management;
 
-import com.project.company.management.domain.Employee;
-import com.project.company.management.domain.Enterprise;
-import com.project.company.management.domain.Transaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
