@@ -1,9 +1,6 @@
 package com.project.company.management.domain.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -13,7 +10,9 @@ public class Profile {
     private long id;
     private String image;
     private String phone;
-    private String user;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="employee_id")
+    private Employee user;
     private Date createdAt;
     private Date updatedAt;
 
@@ -36,13 +35,7 @@ public class Profile {
         this.phone = phone;
     }
 
-    public String getUser() {
-        return user;
-    }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
 
 
 }
