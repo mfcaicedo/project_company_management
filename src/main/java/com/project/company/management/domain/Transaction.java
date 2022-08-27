@@ -1,25 +1,30 @@
 package com.project.company.management.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Transaction {
     /**
      * Atributos
      */
-
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private long id;
     private String concept;
     private float amount;
-    private Employee user;
+    //private Employee user;
+    @ManyToOne
+    @JoinColumn(name="enterprise_id")
+    private Enterprise enterprise;
 
+    @ManyToOne
+    @JoinColumn(name="employee_id")
+    private Employee employee;
 
     /**
      * Constructor
      */
     public Transaction (){}
-
-    public Transaction(String concept, float amount, Employee user) {
-        this.concept = concept;
-        this.amount = amount;
-        this.user = user;
-    }
 
     /**
      * Getters and setters
@@ -41,13 +46,6 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Employee getUser() {
-        return user;
-    }
-
-    public void setUser(Employee user) {
-        this.user = user;
-    }
 
     /**
      * Métodos y opereaciones

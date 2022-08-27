@@ -11,25 +11,23 @@ public class Employee {
     private long id;
     private String email;
     private String name;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="profile_id")
     private Profile profile;
 
-    private List<String> role;
+    private Enum_RoleName role;
+    private Date createdAt;
+    private Date updatedAt;
 
     @ManyToOne
     @JoinColumn(name="enterprise_id")
     private Enterprise enterprise;
 
-    @OneToMany
-    @JoinColumn(name="transaction_id")
+    @OneToMany(mappedBy="employee")
     private List<Transaction> transaction;
 
-    private Date createdAt;
-    private Date updatedAt;
-
-
     public Employee() {
+
     }
 
 
@@ -48,20 +46,11 @@ public class Employee {
     public void setName(String name) {
         this.name = name;
     }
-    public List<String> getRole() {
+    public Enum_RoleName getRole() {
         return role;
     }
 
-    public void setRole(List<String> role) {
+    public void setRole(Enum_RoleName role) {
         this.role = role;
     }
-
-    public Enterprise getEnterprise() {
-        return enterprise;
-    }
-
-    public void setEnterprise(Enterprise enterprise) {
-        this.enterprise = enterprise;
-    }
-
 }

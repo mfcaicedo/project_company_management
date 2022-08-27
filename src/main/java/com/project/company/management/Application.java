@@ -1,5 +1,8 @@
 package com.project.company.management;
 
+import com.project.company.management.domain.Employee;
+import com.project.company.management.domain.Enterprise;
+import com.project.company.management.domain.Transaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +19,16 @@ public class Application {
 	 */
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+	SpringApplication.run(Application.class, args);
+
+		//Instaciamos los Entidades
+		//Enterprise objEnterprise = new Enterprise();
+		//Transaction objTransaction = new Transaction();
+		//Employee objEmployee = new Employee();
+
+		//objEnterprise.setName("Ejemplo");
+		//System.out.println("name empresa: " + objEnterprise.getName());
+
 	}
 	
 	@GetMapping("/hello")

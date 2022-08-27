@@ -1,11 +1,8 @@
 package com.project.company.management.domain;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 public class Enterprise {
@@ -19,7 +16,9 @@ public class Enterprise {
     private String document;
     private String phone;
     private String address;
+    @OneToMany(mappedBy = "enterprise")
     private ArrayList<Employee> users; /*Es tipo de Employeed es una foranea*/
+    @OneToMany(mappedBy = "enterprise")
     private ArrayList<Transaction> transactions; /*Foranea*/
     private Date creatAt;
     private Date updateAt;
@@ -27,17 +26,10 @@ public class Enterprise {
     /**
      * Constructor
      */
-    public Enterprise(long id, String name, String document, String phone, String address, ArrayList<Employee> users, ArrayList<Transaction> transactions, Date creatAt, Date updateAt) {
-        this.id = id;
-        this.name = name;
-        this.document = document;
-        this.phone = phone;
-        this.address = address;
-        this.users = users;
-        this.transactions = transactions;
-        this.creatAt = creatAt;
-        this.updateAt = updateAt;
+    public Enterprise() {
+
     }
+
     /**
      * Getters and setters
      */
