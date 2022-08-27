@@ -5,11 +5,13 @@ import com.project.company.management.domain.Enterprise;
 import com.project.company.management.domain.Transaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
+
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 @RestController
 public class Application {
 
@@ -22,12 +24,12 @@ public class Application {
 	SpringApplication.run(Application.class, args);
 
 		//Instaciamos los Entidades
-		//Enterprise objEnterprise = new Enterprise();
-		//Transaction objTransaction = new Transaction();
-		//Employee objEmployee = new Employee();
+		Enterprise objEnterprise = new Enterprise();
+		Transaction objTransaction = new Transaction();
+		Employee objEmployee = new Employee();
 
-		//objEnterprise.setName("Ejemplo");
-		//System.out.println("name empresa: " + objEnterprise.getName());
+		objEnterprise.setName("Ejemplo");
+		System.out.println("name empresa: " + objEnterprise.getName());
 
 	}
 	
