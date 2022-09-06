@@ -3,8 +3,10 @@ package com.project.company.management.domain.entities;
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Entity
 public class Profile {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

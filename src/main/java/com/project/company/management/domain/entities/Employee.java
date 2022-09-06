@@ -4,8 +4,10 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+
 @Entity
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
