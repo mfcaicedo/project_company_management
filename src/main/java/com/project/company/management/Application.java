@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-@RestController
 public class Application {
 
 	/**
@@ -22,19 +21,6 @@ public class Application {
 
 	public static void main(String[] args) {
 	SpringApplication.run(Application.class, args);
-
-		//Instaciamos los Entidades
-		Enterprise objEnterprise = new Enterprise();
-		Transaction objTransaction = new Transaction();
-		Employee objEmployee = new Employee();
-
-		objEnterprise.setName("Ejemplo");
-		System.out.println("name empresa: " + objEnterprise.getName());
-
 	}
-	
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-	return String.format("hello %s!", name);
-	}
+
 }
