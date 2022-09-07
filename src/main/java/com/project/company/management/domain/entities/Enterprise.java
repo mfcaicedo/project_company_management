@@ -1,13 +1,17 @@
 package com.project.company.management.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table(name = "enterprise")
-public class Enterprise {
+public class Enterprise  {
     /**
      * Atributos
      */
@@ -30,6 +34,20 @@ public class Enterprise {
      */
     public Enterprise() {
 
+    }
+
+    public Enterprise(long id, String name, String document, String phone, String address,
+                      List<Employee> users, List<Transaction> transactions, Date creatAt,
+                      Date updateAt) {
+        this.id = id;
+        this.name = name;
+        this.document = document;
+        this.phone = phone;
+        this.address = address;
+        this.users = users;
+        this.transactions = transactions;
+        this.creatAt = creatAt;
+        this.updateAt = updateAt;
     }
 
     /**
@@ -74,19 +92,19 @@ public class Enterprise {
     public void setAddress(String address) {
         this.address = address;
     }
+    @JsonBackReference
 
     public List<Employee> getUsers() {
         return users;
     }
+    @JsonBackReference
 
     public void setUsers(List<Employee> users) {
         this.users = users;
     }
-
     public List<Transaction> getTransactions() {
         return transactions;
     }
-
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
@@ -106,6 +124,8 @@ public class Enterprise {
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
+
+
 
     /**
      * Métodos y operaciones

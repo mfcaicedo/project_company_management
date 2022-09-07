@@ -27,6 +27,14 @@ public class Transaction {
      */
     public Transaction (){}
 
+    public Transaction(long id, String concept, float amount, Enterprise enterprise, Employee employee) {
+        this.id = id;
+        this.concept = concept;
+        this.amount = amount;
+        this.enterprise = enterprise;
+        this.employee = employee;
+    }
+
     /**
      * Getters and setters
      * @return
@@ -47,6 +55,29 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
     /**
      * Métodos y opereaciones

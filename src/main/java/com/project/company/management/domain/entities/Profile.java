@@ -1,9 +1,13 @@
 package com.project.company.management.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
-
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table(name = "profile")
 public class Profile {
@@ -13,13 +17,18 @@ public class Profile {
     private long id;
     private String image;
     private String phone;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="employee_id")
-    private Employee user;
     private Date createdAt;
     private Date updatedAt;
 
     public Profile() {
+    }
+
+    public Profile(long id, String image, String phone, Date createdAt, Date updatedAt) {
+        this.id = id;
+        this.image = image;
+        this.phone = phone;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public String getImage() {
@@ -38,7 +47,27 @@ public class Profile {
         this.phone = phone;
     }
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public Date getCreatedAt() {
+        return createdAt;
+    }
 
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }
