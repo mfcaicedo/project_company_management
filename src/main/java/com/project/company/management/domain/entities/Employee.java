@@ -1,11 +1,13 @@
 package com.project.company.management.domain.entities;
 
+import javax.lang.model.element.Name;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 
 @Entity
+@Table(name = "employee")
 public class Employee {
 
     @Id

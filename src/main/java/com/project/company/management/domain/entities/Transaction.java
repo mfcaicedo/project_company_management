@@ -3,6 +3,7 @@ package com.project.company.management.domain.entities;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "transaction")
 public class Transaction {
     /**
      * Atributos
