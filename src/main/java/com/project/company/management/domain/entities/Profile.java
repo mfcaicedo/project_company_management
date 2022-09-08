@@ -13,9 +13,6 @@ public class Profile {
     private long id;
     private String image;
     private String phone;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="employee_id")
-    private Employee user;
     private Date createdAt;
     private Date updatedAt;
 

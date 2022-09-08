@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 
 
 @SpringBootApplication
@@ -24,6 +25,10 @@ public class Application {
 	public static void main(String[] args) {
 	SpringApplication.run(Application.class, args);
 
+	Date prueba = new Date();
+	System.out.println("fecha: " + prueba);
+
+
 		//Instaciamos los Entidades
 		//Enterprise objEnterprise = new Enterprise();
 		//Transaction objTransaction = new Transaction();
@@ -31,7 +36,6 @@ public class Application {
 
 		//objEnterprise.setName("Ejemplo");
 		//System.out.println("name empresa: " + objEnterprise.getName());
-
 	}
 	
 	//@GetMapping("/hello")
