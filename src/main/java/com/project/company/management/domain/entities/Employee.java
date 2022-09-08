@@ -116,11 +116,11 @@ public class Employee{
         this.enterprise = enterprise;
     }
 
-
+    @JsonBackReference
     public List<Transaction> getTransaction() {
         return transaction;
     }
-
+    @JsonBackReference
     public void setTransaction(List<Transaction> transaction) {
         this.transaction = transaction;
     }

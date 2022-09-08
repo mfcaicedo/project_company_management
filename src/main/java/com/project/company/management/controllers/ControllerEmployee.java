@@ -5,6 +5,7 @@ import com.project.company.management.domain.entities.Employee;
 import com.project.company.management.services.IServiceEmployee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +25,8 @@ public class ControllerEmployee {
     }
 
     //CREAR EMPLEADO
-    @PostMapping("/users")
+    //@PostMapping(value = "/users",produces = "application/json")
+    @PostMapping(value = "/users",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE )
     public Employee create(@RequestBody Employee employee){
         return employeeService.create(employee);
     }

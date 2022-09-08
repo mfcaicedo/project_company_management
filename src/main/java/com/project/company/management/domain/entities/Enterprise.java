@@ -102,9 +102,13 @@ public class Enterprise  {
     public void setUsers(List<Employee> users) {
         this.users = users;
     }
+    @JsonBackReference
+
     public List<Transaction> getTransactions() {
         return transactions;
     }
+    @JsonBackReference
+
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
