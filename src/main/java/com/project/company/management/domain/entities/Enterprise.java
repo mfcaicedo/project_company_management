@@ -18,7 +18,8 @@ public class Enterprise {
     private String document;
     private String phone;
     private String address;
-    @OneToMany(mappedBy = "enterprise")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "enterprise")
+    //@OneToMany(mappedBy = "employee")
     private List<Employee> users; /*Es tipo de Employeed es una foranea*/
     @OneToMany(mappedBy = "enterprise")
     private List<Transaction> transactions; /*Foranea*/
@@ -31,6 +32,7 @@ public class Enterprise {
     public Enterprise() {
 
     }
+
 
     /**
      * Getters and setters
@@ -73,22 +75,6 @@ public class Enterprise {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public List<Employee> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<Employee> users) {
-        this.users = users;
-    }
-
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
     }
 
     public Date getCreatAt() {

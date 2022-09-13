@@ -16,10 +16,14 @@ import java.util.List;
 public class EnterpriseController {
     @Autowired
     private IEnterpriseService enterpriseService;
-
+    /**
+     *  Obtener todas las empresas
+     * @return lista de empresas
+     */
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public List<Enterprise> findAll(){
+
         return (List<Enterprise>) enterpriseService.findAll();
     }
 

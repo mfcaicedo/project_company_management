@@ -47,6 +47,25 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+    public void setEnterprise(Enterprise enterprise){
+        this.enterprise = enterprise;
+    }
+
 
     /**
      * Métodos y opereaciones

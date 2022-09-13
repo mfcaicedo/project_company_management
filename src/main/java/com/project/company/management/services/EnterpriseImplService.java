@@ -12,7 +12,7 @@ import java.util.Optional;
 
 /**
  * Servicio de la Empresa
- * @author Mfcaicedo
+ * @author Mfcaicedo,bbohorquez
  */
 @Service
 public class EnterpriseImplService implements IEnterpriseService{
@@ -47,6 +47,7 @@ public class EnterpriseImplService implements IEnterpriseService{
      */
     @Override
     public Enterprise create(Enterprise enterprise) {
+
         return enterpriseDao.save(enterprise);
     }
 
