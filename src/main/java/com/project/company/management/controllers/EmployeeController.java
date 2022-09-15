@@ -17,7 +17,17 @@ import java.util.List;
 public class EmployeeController {
     @Autowired
     private IEmployeeService employeeService;
-
+    /**
+     *  Obtener una Empleado por id
+     * @param id identificador de la empleado a buscar
+     * @return empresa encontrada
+     */
+    @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public Employee  findById(@PathVariable Long id){
+        Employee employee = employeeService.findById(id);
+        return employee;
+    }
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public List<Employee> findAll(){
