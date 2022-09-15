@@ -26,8 +26,8 @@ public class Application {
 	public static void main(String[] args) {
 	SpringApplication.run(Application.class, args);
 
-	Date prueba = new Date();
-	System.out.println("fecha: " + prueba);
+	//Date prueba = new Date();
+	//System.out.println("fecha: " + prueba);
 
 
 		//Instaciamos los Entidades

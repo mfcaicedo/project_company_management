@@ -11,17 +11,21 @@ import java.util.Date;
 import java.util.List;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
+//ME PERMITE PASAR DE UNA CLASE A UNA ENTIDAD(AMBITO BASES DATOS)
 @Entity
+//ME PERMITE DAR CARACTERISTICAS A LA ENTIDAD
 @Table(name = "employee")
 public class Employee{
-
+    //ME PERMITE DECLARAR UN ATRIBUTO COMO LLAVE PRIMARIA
     @Id
+    //ME PERMITE UTILIZAR UNA ESTRATEGIA DE GENERAR VALORES
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String email;
     private String name;
+    //CARDINALIDAD
+    //ME PERMITE RELACIONAR CLASES(ENTIDADES)
     @OneToOne(fetch = FetchType.LAZY)
-
     @JoinColumn(name="profile_id")
     private Profile profile;
 

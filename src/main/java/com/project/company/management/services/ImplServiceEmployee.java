@@ -62,4 +62,11 @@ public class ImplServiceEmployee implements IServiceEmployee {
         return true;
     }
 
+    @Override
+    public Employee findByName(Long id) {
+        return null;
+    }
+
+
+
 }

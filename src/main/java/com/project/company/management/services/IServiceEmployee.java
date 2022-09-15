@@ -16,4 +16,7 @@ public interface IServiceEmployee {
     public Employee update(Long id, Employee prmEmployee);
 
     public boolean deleteById(Long id);
+
+    public Employee findByName(Long id);
+
 }

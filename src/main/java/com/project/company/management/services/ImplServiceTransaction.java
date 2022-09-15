@@ -14,10 +14,20 @@ public class ImplServiceTransaction implements IServiceTransaction{
     IRepositoryTransaction repositoryTransaction;
 
     @Override
-    public List<Transaction> findAllByEnterprise(long id) {
+    public Transaction create(Transaction transaction) {
+        return repositoryTransaction.save(transaction);
+    }
+
+    @Override
+    public List<Transaction> findAllByEnterprise(Long id) {
         List<Transaction> auxLstTransaction = new ArrayList<>();
         repositoryTransaction.findByEnterprise(id).forEach(auxLstTransaction::add);
         return auxLstTransaction;
+    }
+
+    @Override
+    public float totalAmount(Long id) {
+        return repositoryTransaction.totalAmount(id);
     }
 
 
