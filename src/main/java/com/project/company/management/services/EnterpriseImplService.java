@@ -21,6 +21,7 @@ public class EnterpriseImplService implements IEnterpriseService{
      * Inyeccion de Empresa
      * @return
      */
+    //INYECTAR DEPENDENCIAS
     @Autowired
     private IRepositoryEnterprise enterpriseDao;
 
@@ -58,7 +59,8 @@ public class EnterpriseImplService implements IEnterpriseService{
      * @return
      */
     @Override
-    @Transactional
+    //ME PERMITE SINCRONIZAR LA BASE DE DATOS
+    //@Transactional
     public Enterprise update(Long id, Enterprise enterprise) {
         Enterprise enterprise1 = this.findById(id);
         enterprise1.setName(enterprise.getName());
@@ -73,7 +75,7 @@ public class EnterpriseImplService implements IEnterpriseService{
      * @param id identificador de la empresa a eliminar
      */
     @Override
-    @Transactional
+    //@Transactional
     public void deleteById(Long id) {
         enterpriseDao.deleteById(id);
     }
