@@ -1,8 +1,9 @@
-package com.project.company.management.domain;
+package com.project.company.management.domain.entities;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "transaction")
 public class Transaction {
     /**
      * Atributos
@@ -44,6 +45,25 @@ public class Transaction {
 
     public void setAmount(float amount) {
         this.amount = amount;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+    public void setEnterprise(Enterprise enterprise){
+        this.enterprise = enterprise;
     }
 
 

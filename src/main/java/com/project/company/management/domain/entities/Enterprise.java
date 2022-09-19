@@ -1,10 +1,12 @@
-package com.project.company.management.domain;
+package com.project.company.management.domain.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@Table(name = "enterprise")
 public class Enterprise {
     /**
      * Atributos
@@ -16,10 +18,11 @@ public class Enterprise {
     private String document;
     private String phone;
     private String address;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "enterprise")
+    //@OneToMany(mappedBy = "employee")
+    private List<Employee> users; /*Es tipo de Employeed es una foranea*/
     @OneToMany(mappedBy = "enterprise")
-    private ArrayList<Employee> users; /*Es tipo de Employeed es una foranea*/
-    @OneToMany(mappedBy = "enterprise")
-    private ArrayList<Transaction> transactions; /*Foranea*/
+    private List<Transaction> transactions; /*Foranea*/
     private Date creatAt;
     private Date updateAt;
 
@@ -29,6 +32,7 @@ public class Enterprise {
     public Enterprise() {
 
     }
+
 
     /**
      * Getters and setters
@@ -71,22 +75,6 @@ public class Enterprise {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public ArrayList<Employee> getUsers() {
-        return users;
-    }
-
-    public void setUsers(ArrayList<Employee> users) {
-        this.users = users;
-    }
-
-    public ArrayList<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(ArrayList<Transaction> transactions) {
-        this.transactions = transactions;
     }
 
     public Date getCreatAt() {

@@ -1,19 +1,18 @@
-package com.project.company.management.domain;
+package com.project.company.management.domain.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
+
 @Entity
+@Table(name = "profile")
 public class Profile {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String image;
     private String phone;
-    private String user;
     private Date createdAt;
     private Date updatedAt;
 
@@ -36,13 +35,7 @@ public class Profile {
         this.phone = phone;
     }
 
-    public String getUser() {
-        return user;
-    }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
 
 
 }
