@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div sec:authorize="isAuthenticated()">
+
+    <form th:object="${newEmployee}" method="post" th:action="@{/usuario/front}">
+
+        <div class="">
+            <label for="email">Email:</label>
+            <input id="email" name="email" th:field="*{email}">
+        </div>
+
+        <div class="">
+            <label for="password">Email:</label>
+            <input id="password" name="password" th:field="*{password}">
+        </div>
+
+<!--        <div class="">-->
+<!--            <label for="email">Email:</label>-->
+<!--            <input id="email" name="email" th:field="*{email}">-->
+<!--        </div>-->
+
+        <div class="">
+            <label for="" class="w-full font-bold my-2">Perfil:</label>
+            <select th:field="*{perfil.id}"}>
+                <option th:each="perfil : ${perfiles}" th:text="${perfil.name}" th:value="${perfil.id}" ></option>
+            </select>
+        </div>
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ROLES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="rol : ${roles}">
+                        <td>
+                            <input type="checkbox" th:text="${rol.name}" th:value="${rol.name}" th:field="*{roles}">
+                        </td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+        <div class="my-2">
+            <button type="submit">
+                Crear usuario
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

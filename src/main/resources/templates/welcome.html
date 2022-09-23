@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="text-green-500 bg-gray-200 rounded">
+    <p class="uppercase font-bold text-center">Hola a todos </p>
+
+</div>
+
+<div sec:authorize="isAuthenticated()">
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">
+            Cerrar sesión
+        </button>
+
+    </form>
+
+    <div sec:authorize="hasAnyRole('ADMIN', 'OPERARIO')">
+        <table class="bg-gray-200 px-4 py-4 my-0 mx-auto">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>rol</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.name}"></td>
+                <td th:text="${usuario.email}"></td>
+                <td th:text="${usuario.role}"></td>
+                <td>
+                    <div sec:authorize="hasAnyRole('ADMIN')">
+
+
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>
+<div sec:authorize="!isAuthenticated()">
+    <a href="/login">Iniciar sesión</a>
+
+</div>
+
+
+</body>
+</html>

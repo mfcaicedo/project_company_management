@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+<body>
+
+<form method="POST"  th:action="@{/login}"  class="text-center" th:object="${formUser}">
+
+    <div class="">
+        <div>
+            <!--<img src="login.jpeg" class="posicion-img">-->
+        </div>
+        <div class="fs-5">
+            <p>Por favor iniciar sesión</p>
+        </div>
+        <div class="form-floating mt-3">
+            <input type="email" class="form-control" th:field="*{email}" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mt-3">
+            <input type="password" class="form-control" th:field="*{password}" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-check mt-5">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Recordame
+            </label>
+        </div>
+        <div class="mt-5">
+            <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+        </div>
+
+    </div>
+
+</form>
+
+</body>
+</html>

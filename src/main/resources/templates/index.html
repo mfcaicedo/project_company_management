@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>index</title>
+</head>
+
+<header class="">
+    <!--Barra de navegación-->
+    <nav class="bg-gradient-to-r from-cyan-500 to-blue-500 w-full px-2 py-5 shadow-lg">
+        <div class="flex flex-auto justify-between gap-2 px-2 items-center">
+            <div class="text-white font-bold">
+                <!-- <img src="" alt=""> -->
+                Logo
+            </div>
+            <div class="flex flex-auto justify-end gap-4 text-lg text-white font-bold">
+                <a href="#" class="hover:bg-sky-600 px-2 py-1 rounded" >Empresas</a>
+                <a href="#" class="hover:bg-sky-600 px-2 py-1 rounded" >Usuarios</a>
+                <a href="#" class="hover:bg-sky-600 px-2 py-1 rounded" >Ingresos y Egresos</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body class="">
+<div class="text-gray-200 text-center py-8 my-0 mx-auto">
+    <h1 class="text-red-600 uppercase text-lg font-bold text-center ">TODO list</h1>
+</div>
+<div class="px-5 py-4">
+    <th:block th:if="${todos.size() > 0}">
+        <ul id="todo-items-list">
+            <li th:each="item : ${todos}" th:text="${item.description}">
+            </li>
+        </ul>
+    </th:block>
+    <th:block th:if="${todos.size() == 0}">
+        <div id="empty-todos-message" class="">There are no todo items</div>
+    </th:block>
+</div>
+
+</body>
+
+<footer class="">
+
+</footer>
+
+</html>
