@@ -40,4 +40,9 @@ public interface IEmployeeService {
      */
     public void deleteById(Long id);
 
+    /**
+     * Encontrar empleado por email
+     */
+    public Employee getEmployee(String email)throws Exception;
+
 }

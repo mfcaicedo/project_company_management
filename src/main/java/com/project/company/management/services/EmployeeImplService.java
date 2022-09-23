@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class EmployeeImplService implements  IEmployeeService{
 
@@ -24,6 +26,15 @@ public class EmployeeImplService implements  IEmployeeService{
     public Employee findById(Long id) {
         Employee employee1 = repositoryEmployee.findById(id).orElse(null);
         return  employee1;
+    }
+    @Override
+    public Employee getEmployee(String email) throws Exception {
+        Optional<Employee> employeeOptional = Optional.ofNullable(repositoryEmployee.findByEmail(email));
+        if(employeeOptional.isPresent()){
+            return employeeOptional.get();
+        }else{
+            throw new Exception("Empleado No Existe");
+        }
     }
 
     @Override

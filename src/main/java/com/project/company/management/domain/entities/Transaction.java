@@ -1,5 +1,7 @@
 package com.project.company.management.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class Transaction {
     @JoinColumn(name="enterprise_id")
     private Enterprise enterprise;
 
+    //@JsonIgnore
     @ManyToOne
     @JoinColumn(name="employee_id")
     private Employee employee;
@@ -26,6 +29,14 @@ public class Transaction {
      * Constructor
      */
     public Transaction (){}
+
+    public Transaction(long id, String concept, float amount, Enterprise enterprise, Employee employee) {
+        this.id = id;
+        this.concept = concept;
+        this.amount = amount;
+        this.enterprise = enterprise;
+        this.employee = employee;
+    }
 
     /**
      * Getters and setters
@@ -66,8 +77,10 @@ public class Transaction {
         this.enterprise = enterprise;
     }
 
-
-    /**
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+/**
      * Métodos y opereaciones
      */
 }

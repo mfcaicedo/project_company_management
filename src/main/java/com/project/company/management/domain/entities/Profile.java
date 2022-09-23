@@ -19,6 +19,14 @@ public class Profile {
     public Profile() {
     }
 
+    public Profile(long id, String image, String phone, Date createdAt, Date updatedAt) {
+        this.id = id;
+        this.image = image;
+        this.phone = phone;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public String getImage() {
         return image;
     }
@@ -35,7 +43,27 @@ public class Profile {
         this.phone = phone;
     }
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public Date getCreatedAt() {
+        return createdAt;
+    }
 
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }
