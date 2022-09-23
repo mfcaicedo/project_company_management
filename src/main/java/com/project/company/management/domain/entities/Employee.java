@@ -2,6 +2,7 @@ package com.project.company.management.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.lang.model.element.Name;
@@ -10,7 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer"})
 //ME PERMITE PASAR DE UNA CLASE A UNA ENTIDAD(AMBITO BASES DATOS)
 @Entity
 //ME PERMITE DAR CARACTERISTICAS A LA ENTIDAD
@@ -36,24 +37,26 @@ public class Employee{
     @ManyToOne
 
     @JoinColumn(name="enterprise_id")
+
     private Enterprise enterprise;
 
     @OneToMany(mappedBy="employee")
+
     private List<Transaction> transaction;
 
     public Employee() {
 
     }
 
-    public Employee(long id, String email, String name, Profile profile, Enum_RoleName role,
+    public Employee(long id, String email, String name, Profile profile,
                     Date createdAt, Date updatedAt, Enterprise enterprise,
-                    List<Transaction> transaction) {
+                    List<Transaction> transaction,Enum_RoleName role) {
 
         this.id = id;
         this.email = email;
         this.name = name;
         this.profile = profile;
-        this.role = role;
+        this.role=role;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.enterprise = enterprise;
@@ -75,13 +78,7 @@ public class Employee{
     public void setName(String name) {
         this.name = name;
     }
-    public Enum_RoleName getRole() {
-        return role;
-    }
 
-    public void setRole(Enum_RoleName role) {
-        this.role = role;
-    }
 
     public long getId() {
         return id;
@@ -120,12 +117,19 @@ public class Employee{
         this.enterprise = enterprise;
     }
 
-    @JsonBackReference
+    //@JsonBackReference
     public List<Transaction> getTransaction() {
         return transaction;
     }
-    @JsonBackReference
+    //@JsonBackReference
     public void setTransaction(List<Transaction> transaction) {
         this.transaction = transaction;
+    }
+    public Enum_RoleName getRole() {
+        return role;
+    }
+
+    public void setRole(Enum_RoleName role) {
+        this.role = role;
     }
 }

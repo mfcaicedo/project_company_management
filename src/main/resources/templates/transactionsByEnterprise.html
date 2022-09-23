@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>listado de movimientos</title>
+    <!--Boostrap CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <!-- Seccion Navegacion -->
+      <nav class="navbar navbar-dark bg-dark">
+        <form class="container-fluid justify-content-start">
+            <button class="btn btn-outline-success me-2" type="button">Home</button>
+            <a th:href="@{/enterprises}" class="btn btn-sm btn-outline-secondary" type="button" style="color:#66ad5f;">Control De Empresas</a>
+            <a th:href="@{/users}" class="btn btn-sm btn-outline-secondary" type="button" style="color:#66ad5f;">Control De Usuarios</a>    </form>
+        </form>
+      </nav>
+      <!--Tabla Movimientos de una empresa-->
+      <!--Contenedor-->
+      <div class="container">
+        <div class="row">
+            <h1>Lista de Movimientos</h1>
+        </div>
+
+
+            <!--Table Boostrap-->
+            <table class="table table-dark table-striped">
+                <!--Fila-->
+                <tr>
+                    <!--Cabeceras-->
+                    <th>Id</th>
+                    <th>Concepto</th>
+                    <th>Monto</th>
+                    <th>Empleado</th>
+                    <th>Acciones</th>
+                </tr>
+                <!--Agrupar Contenido-->
+                <tbody>
+                <!--Recorrido For each Clave:Valor-->
+                  <tr th:each="transaction : ${transactions}">
+                      <!--Crear celdas de tabla-->
+                      <td th:text="${transaction.id}">Id</td>
+                      <td th:text="${transaction.concept}">Concepto</td>
+                      <td th:text="${transaction.amount}">Monto</td>
+                      <td th:text="${transaction.employee.name}">Empleado</td>
+                  </tr>
+                </tbody>
+            </table>
+          <!--Total Movimientos-->
+          <div class="input-group mb-3">
+              <span class="input-group-text">Total $</span>
+              <input type="number" th:value="${total}" readonly>
+          </div>
+        </div>
+</body>
+</html>

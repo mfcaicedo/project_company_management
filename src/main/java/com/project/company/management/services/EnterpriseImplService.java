@@ -16,11 +16,11 @@ import java.util.Optional;
  */
 @Service
 public class EnterpriseImplService implements IEnterpriseService{
-
     /**
      * Inyeccion de Empresa
      * @return
      */
+
     //INYECTAR DEPENDENCIAS
     @Autowired
     private IRepositoryEnterprise enterpriseDao;
@@ -37,7 +37,7 @@ public class EnterpriseImplService implements IEnterpriseService{
 
     @Override
     public Enterprise findById(Long id) {
-        Enterprise enterprise1 = enterpriseDao.findById(id).orElse(null);
+        Enterprise enterprise1 = enterpriseDao.findById(id).get();
         return enterprise1;
     }
 
@@ -53,21 +53,21 @@ public class EnterpriseImplService implements IEnterpriseService{
 
     /**
      * Actualización de una empresa
-     * @param id identificador de la empresa a actualizar
+     * @param enterprise  la empresa a actualizar
      * @param enterprise objeto de empresa a editar
      * @return
      */
     @Override
     //ME PERMITE SINCRONIZAR LA BASE DE DATOS
     //@Transactional
-    public Enterprise update(Long id, Enterprise enterprise) {
-        Enterprise enterprise1 = this.findById(id);
-        enterprise1.setName(enterprise.getName());
-        enterprise1.setDocument(enterprise.getDocument());
-        enterprise1.setAddress(enterprise.getAddress());
-        enterprise1.setUpdateAt(enterprise.getUpdateAt());
-        enterprise1.setPhone(enterprise.getPhone());
-        return enterpriseDao.save(enterprise1);
+    public Enterprise update(Enterprise enterprise) {
+        //Enterprise enterprise1 = this.findById(id);
+        //enterprise1.setName(enterprise.getName());
+        //enterprise1.setDocument(enterprise.getDocument());
+        //enterprise1.setAddress(enterprise.getAddress());
+        //enterprise1.setUpdateAt(enterprise.getUpdateAt());
+        //enterprise1.setPhone(enterprise.getPhone());
+        return enterpriseDao.save(enterprise);
     }
     /**
      * Eliminar una empresa con id

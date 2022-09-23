@@ -1,6 +1,7 @@
 package com.project.company.management.services;
 
 import com.project.company.management.domain.entities.Employee;
+import com.project.company.management.domain.entities.Enterprise;
 import com.project.company.management.repositories.IRepositoryEmployee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class ImplServiceEmployee implements IServiceEmployee {
     public Employee update(Long id, Employee prmEmployee) {
         Employee employee = this.findById(id);
         employee.setName(prmEmployee.getName());
-        employee.setRole(prmEmployee.getRole());
+        //employee.setRole(prmEmployee.getRole());
         employee.setEmail(prmEmployee.getEmail());
         employee.setId(prmEmployee.getId());
         employee.setUpdatedAt(prmEmployee.getUpdatedAt());
@@ -50,6 +51,19 @@ public class ImplServiceEmployee implements IServiceEmployee {
         employee.setTransaction(prmEmployee.getTransaction());
         employee.setCreatedAt(prmEmployee.getCreatedAt());
 
+        return repositoryEmployee.save(employee);
+    }
+
+    @Override
+    //ME PERMITE SINCRONIZAR LA BASE DE DATOS
+    //@Transactional
+    public Employee update(Employee employee) {
+        //Enterprise enterprise1 = this.findById(id);
+        //enterprise1.setName(enterprise.getName());
+        //enterprise1.setDocument(enterprise.getDocument());
+        //enterprise1.setAddress(enterprise.getAddress());
+        //enterprise1.setUpdateAt(enterprise.getUpdateAt());
+        //enterprise1.setPhone(enterprise.getPhone());
         return repositoryEmployee.save(employee);
     }
 

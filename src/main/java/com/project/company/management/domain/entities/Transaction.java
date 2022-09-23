@@ -1,5 +1,7 @@
 package com.project.company.management.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,10 +18,12 @@ public class Transaction {
     //private Employee user;
     @ManyToOne
     @JoinColumn(name="enterprise_id")
+    @JsonIgnore
     private Enterprise enterprise;
 
     @ManyToOne
     @JoinColumn(name="employee_id")
+    @JsonIgnore
     private Employee employee;
 
     /**

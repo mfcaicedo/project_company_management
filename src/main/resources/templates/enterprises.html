@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>listado de empresas</title>
+    <!--Boostrap CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+    <body>
+        <!-- Seccion Navegacion -->
+        <nav class="navbar navbar-dark bg-dark">
+            <form class="container-fluid justify-content-start">
+                <button  class="btn btn-outline-success me-2" type="button">Home</button>
+                <a th:href="@{/enterprises}" class="btn btn-sm btn-outline-secondary" type="button" style="color:#66ad5f;">Control De Empresas</a>
+                <a th:href="@{/users}" class="btn btn-sm btn-outline-secondary" type="button" style="color:#66ad5f;">Control De Usuarios</a>    </form>
+            </form>
+        </nav>
+        <!--Tabla Empresas-->
+        <!--Contenedor-->
+        <div class="container">
+            <div class="row">
+                <h1>Lista de empresas</h1>
+            </div>
+
+            <!--CrearEmpresa-->
+            <div class="row">
+                <div class="col-lg-3">
+                    <a th:href="@{/enterprises/crear}" class="btn btn-outline-success">Agregar Empresa</a>
+                </div>
+            </div>
+            <br>
+            <!--Table Boostrap-->
+            <table class="table table-dark table-striped">
+                <!--Fila-->
+                <tr>
+                    <!--Cabeceras-->
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Documento</th>
+                    <th>Telefono</th>
+                    <th>Direccion</th>
+                    <!--<th>Fecha Creacion</th>-->
+                    <!--<th>Fecha Actualizacion</th>-->
+                    <th>Acciones</th>
+                </tr>
+                <!--Agrupar Contenido-->
+                <tbody>
+                    <!--Recorrido For each Clave:Valor-->
+                    <tr th:each="enterprise : ${enterprises}">
+                        <!--Crear celdas de tabla-->
+                        <td th:text="${enterprise.id}">Id</td>
+                        <td th:text="${enterprise.name}">Nombre</td>
+                        <td th:text="${enterprise.document}">Documento</td>
+                        <td th:text="${enterprise.phone}">Telefono</td>
+                        <td th:text="${enterprise.address}">Direccion</td>
+                        <!--<td th:date="${enterprise.createAt}">Fecha Creacion</td>-->
+                        <!--<td th:date="${enterprise.updateAt}">Fecha Actualizacion</td>-->
+                        <td>
+                            <span>
+                                <!--Editar Empresa-->
+                                <a th:href="@{/enterprises/editar/{id}(id=${enterprise.id})}" class="btn btn-outline-warning">Editar</a>
+                                <!--Eliminar Empresa-->
+                                <a th:href="@{/enterprises/{id}(id=${enterprise.id})}" class="btn btn-outline-danger">Eliminar</a>
+                                <!--Movimientos Empresa-->
+                                <a th:href="@{/enterprises/movements/{id}(id=${enterprise.id})}" class="btn btn-outline-success">Movimientos</a>
+                            </span>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

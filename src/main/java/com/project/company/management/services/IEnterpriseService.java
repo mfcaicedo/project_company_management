@@ -38,13 +38,15 @@ public interface IEnterpriseService {
      * @param enterprise objeto de empresa a editar
      * @return Empresa con los datos actualizados
      */
-    public Enterprise update(Long id, Enterprise enterprise);
+    public Enterprise update( Enterprise enterprise);
 
     /**
      * Eliminar una Empresa con id
      * @param id identificador de la empresa a eliminar
      */
     public void deleteById(Long id);
+
+
 
 
 }

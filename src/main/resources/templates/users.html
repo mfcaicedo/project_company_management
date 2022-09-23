@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>listado de empleados</title>
+    <!--Boostrap CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<!-- Seccion Navegacion -->
+<nav class="navbar navbar-dark bg-dark">
+    <form class="container-fluid justify-content-start">
+        <button class="btn btn-outline-success me-2" type="button">Home</button>
+        <a th:href="@{/enterprises}" class="btn btn-sm btn-outline-secondary" type="button" style="color:#66ad5f;">Control De Empresas</a>
+        <a th:href="@{/users}" class="btn btn-sm btn-outline-secondary" type="button" style="color:#66ad5f;">Control De Usuarios</a>    </form>
+</nav>
+<!--Tabla Empleado-->
+<!--Contenedor-->
+<div class="container">
+    <div class="row">
+        <h1>Lista de empleados</h1>
+    </div>
+
+    <!--Crear Empleado-->
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/users/crear}" class="btn btn-outline-success">Agregar Empleado</a>
+        </div>
+    </div>
+    <br>
+    <!--Table Boostrap-->
+    <table class="table table-dark table-striped">
+        <!--Fila-->
+        <tr>
+            <!--Cabeceras-->
+            <th>Id</th>
+            <th>Correo</th>
+            <th>Nombre</th>
+            <th>Perfil</th>
+            <th>Rol</th>
+            <!--<th>Fecha Creacion</th>-->
+            <!--<th>Fecha Actualizacion</th>-->
+            <th>Empresa</th>
+            <th>Acciones</th>
+        </tr>
+        <!--Agrupar Contenido-->
+        <tbody>
+        <!--Recorrido For each Clave:Valor-->
+        <tr th:each="employee : ${employees}">
+            <!--Crear celdas de tabla-->
+            <td th:text="${employee.id}">Id</td>
+            <td th:text="${employee.email}">Correo</td>
+            <td th:text="${employee.name}">Nombre</td>
+            <td th:text="${employee.profile.userName}">Perfil</td>
+            <td th:text="${employee.role}">Rol</td>
+            <!--<td th:date="${enterprise.createAt}">Fecha Creacion</td>-->
+            <!--<td th:date="${enterprise.updateAt}">Fecha Actualizacion</td>-->
+            <td th:text="${employee.enterprise.name}">Empresa</td>
+            <td>
+                <span>
+                    <!--Editar Empleado-->
+                    <a th:href="@{/users/editar/{id}(id=${employee.id})}" class="btn btn-outline-warning">Editar</a>
+                    <!--Eliminar Empleado-->
+                    <a th:href="@{/users/{id}(id=${employee.id})}" class="btn btn-outline-danger">Eliminar</a>
+
+                </span>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
