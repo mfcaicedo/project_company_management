@@ -25,6 +25,7 @@ public class SuccesGoogle implements AuthenticationSuccessHandler {
         DefaultOidcUser user = (DefaultOidcUser) authentication.getPrincipal();
 
         String email = user.getEmail();
+
         try {
             employeeImplService.getEmployee(email);
             response.sendRedirect("/welcome");

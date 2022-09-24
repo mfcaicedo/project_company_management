@@ -29,12 +29,22 @@ public class EmployeeImplService implements  IEmployeeService{
     }
     @Override
     public Employee getEmployee(String email) throws Exception {
+
         Optional<Employee> employeeOptional = Optional.ofNullable(repositoryEmployee.findByEmail(email));
         if(employeeOptional.isPresent()){
             return employeeOptional.get();
         }else{
             throw new Exception("Empleado No Existe");
         }
+
+        /*
+        Employee employee= repositoryEmployee.findByEmail(email);
+        System.out.println("es: "+email);
+        System.out.println("objeto: "+employee.getName());
+        return employee;
+
+         */
+
     }
 
     @Override

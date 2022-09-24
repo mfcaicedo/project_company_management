@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -35,10 +35,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="usuario : ${usuarios}">
-                <td th:text="${usuario.name}"></td>
-                <td th:text="${usuario.email}"></td>
-                <td th:text="${usuario.role}"></td>
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.email}"></td>
+                <td th:text="${employee.role}"></td>
                 <td>
                     <div sec:authorize="hasAnyRole('ADMIN')">
 

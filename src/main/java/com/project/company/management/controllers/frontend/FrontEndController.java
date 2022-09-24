@@ -18,7 +18,7 @@ public class FrontEndController {
 
     @GetMapping("/")
     public String getIndex(){
-        return "index";
+        return "home";
     }
 
     @GetMapping("/login")

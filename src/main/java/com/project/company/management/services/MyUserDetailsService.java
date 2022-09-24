@@ -6,18 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MyUserDetailsService  implements UserDetailsService {
 
     @Autowired
     IEmployeeService employeeService;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        System.out.println("email: "+email);
         Employee employee = null;
         try {
-            employee = employeeService.getEmployee(username);
+            employee = employeeService.getEmployee(email);
         } catch (Exception e){
             e.printStackTrace();
             throw new UsernameNotFoundException(e.getMessage());

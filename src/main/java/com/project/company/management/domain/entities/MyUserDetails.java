@@ -21,15 +21,16 @@ public class MyUserDetails implements UserDetails {
         this.userName = employee.getEmail();
         this.authorities = new ArrayList<>();
 
-       // for (Enum_RoleName rol: employee.getRole()) {
-        //    this.authorities.add(new SimpleGrantedAuthority(rol.name()));
-        //}
+        for (Enum_RoleName rol: employee.getRole()) {
+            this.authorities.add(new SimpleGrantedAuthority(rol.name()));
+        }
+
     }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return this.authorities;
     }
 
     @Override
