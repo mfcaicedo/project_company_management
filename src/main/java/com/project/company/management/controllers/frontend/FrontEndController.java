@@ -16,9 +16,9 @@ public class FrontEndController {
     @Autowired
     IEmployeeService serviceEmployee;
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String getIndex(){
-        return "home";
+        return "index";
     }
 
     @GetMapping("/login")
