@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <link rel="stylesheet" th:href="@{/css/main.css}" />
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Actualizar Empresa</title>
+</head>
+<body>
+
+<div sec:authorize="isAuthenticated()">
+  <header class="">
+    <!--Barra de navegación-->
+    <nav class="bg-gradient-to-r from-cyan-500 to-blue-500 w-full px-2 py-5 shadow-lg">
+      <div class="flex flex-auto justify-between gap-2 px-2 items-center">
+        <div class="text-white font-bold">
+          <!-- <img src="" alt=""> -->
+          <img src="https://seeklogo.com/images/U/unicauca-logo-87F35B8ABC-seeklogo.com.png" height="40" width="40">
+        </div>
+        <div class="flex flex-auto justify-end gap-4 text-lg text-white font-bold" sec:authorize="hasAnyRole('ADMIN','OPERARIO')">
+          <a th:href="@{/index}" class="hover:bg-sky-600 px-2 py-1 rounded" >Inicio</a>
+          <a th:href="@{/enterprises}" class="hover:bg-sky-600 px-2 py-1 rounded" >Control Empresas</a>
+          <a th:href="@{/employee}" class="hover:bg-sky-600 px-2 py-1 rounded" >Control Usuarios</a>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <form th:object="${enterprise}" method="post" th:action="@{/enterprises/{id}(id=${enterprise.id})}">
+
+    <div class="">
+      <label for="name">Nombre :</label>
+      <input id="name" type="text" name="name" th:field="*{name}" placeholder="Digite Nombre: ">
+    </div>
+    <div class="">
+      <label for="address">Direccion:</label>
+      <input id="address" type="text" name="address" th:field="*{address}" placeholder="Digite Direccion: ">
+    </div>
+
+    <div class="">
+      <label for="document">Documento:</label>
+      <input id="document" name="document" th:field="*{document}" placeholder="Digite Documento: ">
+    </div>
+
+    <div class="">
+      <label for="phone">Telefono:</label>
+      <input id="phone" name="phone" th:field="*{phone}" placeholder="Digite telefono: ">
+    </div>
+
+    <div class="my-2">
+      <button type="submit">
+        Actualizar Empresa
+      </button>
+
+    </div>
+
+  </form>
+
+</div>
+
+</body>
+</html>

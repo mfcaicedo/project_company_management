@@ -40,6 +40,8 @@ public interface IEnterpriseService {
      */
     public Enterprise update(Long id, Enterprise enterprise);
 
+    public Enterprise update (Enterprise enterprise);
+
     /**
      * Eliminar una Empresa con id
      * @param id identificador de la empresa a eliminar

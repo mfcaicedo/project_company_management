@@ -47,6 +47,8 @@ public class EmployeeImplService implements  IEmployeeService{
 
     }
 
+
+
     @Override
     public Employee create(Employee employee) {
         return repositoryEmployee.save(employee);
@@ -61,6 +63,11 @@ public class EmployeeImplService implements  IEmployeeService{
         employee1.setCreatedAt(employee.getCreatedAt());
         employee1.setUpdatedAt(employee.getUpdatedAt());
         return repositoryEmployee.save(employee1);
+    }
+
+    @Override
+    public Employee update(Employee employee) {
+        return repositoryEmployee.save(employee);
     }
 
     @Override

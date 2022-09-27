@@ -4,6 +4,7 @@ import com.project.company.management.domain.entities.Employee;
 import com.project.company.management.domain.entities.Enum_RoleName;
 import com.project.company.management.services.EmployeeImplService;
 import com.project.company.management.services.IEmployeeService;
+import com.project.company.management.services.IEnterpriseService;
 import com.project.company.management.services.IProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,46 +15,70 @@ import org.springframework.web.bind.annotation.*;
 public class FrontEndControllerEmployee {
 
     @Autowired
-    IEmployeeService employeeImplService;
+    IEmployeeService employeeService;
 
     @Autowired
     IProfileService profileService;
 
+    @Autowired
+    private IEnterpriseService enterpriseService;
 
-    @DeleteMapping("/delete/employee/front/{id}")
-    public String deleteEmployee(@PathVariable Long id){
-        employeeImplService.deleteById(id);
-        return "redirect:/welcome";
+
+    //LISTAR EMPLEADO
+    @GetMapping("/employee")
+    public String findAll(Model model){
+        model.addAttribute("listEmployee", employeeService.findAll());
+        return "employee";
     }
 
-    @GetMapping("employee/add")
-    public String getAddEmployee(Model model){
-        model.addAttribute("newEmployee", new Employee());
-        model.addAttribute("perfiles", profileService);
+    //ELIMINAR EMPLEADO
+    @GetMapping("/employee/delete/{id}")
+    public String deleteEmployee(@PathVariable Long id){
+        employeeService.deleteById(id);
+        return "redirect:/employee";
+    }
+
+    //AGREGAR EMPLEADO
+
+    @GetMapping("/employee/crear")
+    public String formCreate(Model model){
+        Employee employee = new Employee();
+        model.addAttribute("employee", employee);
+        model.addAttribute("listProfiles",profileService.getProfiles());
         model.addAttribute("roles", Enum_RoleName.values());
+        model.addAttribute("listEnterprises", enterpriseService.findAll());
         return "add-employee";
     }
 
-    @PostMapping("/employee/front")
-    public String postEmployee(@ModelAttribute("newUser") Employee employee){
-        employeeImplService.create(employee);
-
-        return "Redirect:/welcome";
-    }
-    @GetMapping("/usuario/update/front/{id}")
-    public String getEmployee(Model model, @PathVariable String id) throws Exception{
-        employeeImplService.getEmployee(id) ;
-        try{
-            model.addAttribute("UpdateEmployee", employeeImplService.getEmployee(id));
-            return "update-user";
-        }catch (Exception e){
-            return "/error";
-        }
+    @PostMapping("/employee")
+    public String formSave(@ModelAttribute("employee") Employee employee){
+        employeeService.create(employee);
+        return "redirect:/employee";
     }
 
-    @PatchMapping("/usuario/front/{id}")
-    public String patchEmployee(@ModelAttribute("newUser") Employee employee){
 
-        return "";
+
+    //EDITAR EMPLEADO
+    @GetMapping("/employee/editar/{id}")
+    public String formUpdate(@PathVariable Long id, Model model){
+        model.addAttribute("employee", employeeService.findById(id));
+        model.addAttribute("listProfiles",profileService.getProfiles());
+        model.addAttribute("roles", Enum_RoleName.values());
+        model.addAttribute("listEnterprises", enterpriseService.findAll());
+        return "update-employee";
+    }
+
+    @PostMapping("/employee/{id}")
+    public String updateEmployee(@PathVariable Long id,@ModelAttribute("employee") Employee employee, Model model){
+        Employee employeeExist= employeeService.findById(id);
+        employeeExist.setName(employee.getName());
+        employeeExist.setEmail(employee.getEmail());
+        employeeExist.setPassword(employee.getPassword());
+        //employeeExist.setRole(employee.getRole());
+        employeeExist.setProfile(employee.getProfile());
+        employeeExist.setEnterprise(employee.getEnterprise());
+        employeeExist.setUpdatedAt(employee.getUpdatedAt());
+        employeeService.update(employeeExist);
+        return "redirect:/employee";
     }
 }

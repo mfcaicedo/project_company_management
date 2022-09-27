@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html
-      xmlns:th="http://www.thymeleaf.org" lang="en">
+        xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <link rel="stylesheet" th:href="@{/css/main.css}" />
     <meta charset="utf-8" />
@@ -8,26 +8,29 @@
     <title>index</title>
 </head>
 
-<header class="">
-    <!--Barra de navegación-->
-    <nav class="bg-gradient-to-r from-cyan-500 to-blue-500 w-full px-2 py-5 shadow-lg">
-        <div class="flex flex-auto justify-between gap-2 px-2 items-center">
-            <div class="text-white font-bold">
-                <!-- <img src="" alt=""> -->
-                Logo
-            </div>
-            <div class="flex flex-auto justify-end gap-4 text-lg text-white font-bold">
-                <a href="/welcome" class="hover:bg-sky-600 px-2 py-1 rounded" >Empresas</a>
-                <a href="#" class="hover:bg-sky-600 px-2 py-1 rounded" >Usuarios</a>
-                <a href="#" class="hover:bg-sky-600 px-2 py-1 rounded" >Ingresos y Egresos</a>
-            </div>
-        </div>
-    </nav>
-</header>
+<div sec:authorize="isAuthenticated()">
+    <header class="">
+        <!--Barra de navegación-->
+        <nav class="bg-gradient-to-r from-cyan-500 to-blue-500 w-full px-2 py-5 shadow-lg">
+            <div class="flex flex-auto justify-between gap-2 px-2 items-center">
+                <div class="text-white font-bold">
+                    <!-- <img src="" alt=""> -->
+                    <img src="https://seeklogo.com/images/U/unicauca-logo-87F35B8ABC-seeklogo.com.png" height="40" width="40">
+                </div>
+                <div class="flex flex-auto justify-end gap-4 text-lg text-white font-bold" sec:authorize="hasAnyRole('ADMIN','OPERARIO')">
+                    <a th:href="@{/enterprises}" class="hover:bg-sky-600 px-2 py-1 rounded" >Control Empresas</a>
+                    <a th:href="@{/employee}" class="hover:bg-sky-600 px-2 py-1 rounded" >Control Usuarios</a>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="hover:bg-sky-600 px-2 py-1 rounded" >
+                            Cerrar sesión
+                        </button>
+                    </form>
+                </div>
 
-<body class="">
-    <div class="px-5 bg-cyan-500"> Hola </div>
-</body>
+            </div>
+        </nav>
+    </header>
+</div>
 
 <footer class="">
 

@@ -33,6 +33,7 @@ public interface IEmployeeService {
      * @return Empresa con los datos actualizados
      */
     public Employee update(Long id, Employee employee);
+    public Employee update(Employee employee);
 
     /**
      * Eliminar una Employee con id
@@ -40,9 +41,12 @@ public interface IEmployeeService {
      */
     public void deleteById(Long id);
 
+
     /**
      * Encontrar empleado por email
      */
     public Employee getEmployee(String email)throws Exception;
+
+
 
 }

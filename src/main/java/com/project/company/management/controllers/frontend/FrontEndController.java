@@ -13,8 +13,8 @@ import java.util.List;
 
 @Controller
 public class FrontEndController {
-    @Autowired
-    IEmployeeService serviceEmployee;
+    //@Autowired
+    //IEmployeeService serviceEmployee;
 
     @GetMapping("/index")
     public String getIndex(){
@@ -29,11 +29,11 @@ public class FrontEndController {
     @PostMapping("/login")
     public  String postLogin(@ModelAttribute("formUser") Employee employee){
         System.out.println("imprime algo: " + employee); //NOTA AQUPÍ ES QUE NO IMPRIME NADA
-        return "redirect:/welcome";
+        return "redirect:/index";
     }
     @GetMapping("/welcome")
     public String getWelcome(Model model){
-        model.addAttribute("employees", serviceEmployee.findAll());
-        return "welcome";
+        //model.addAttribute("employees", serviceEmployee.findAll());
+        return "index";
     }
 }

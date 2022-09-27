@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+  <link rel="stylesheet" th:href="@{/css/main.css}" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Control Empleados</title>
+</head>
+<body>
+
+
+<div sec:authorize="isAuthenticated()">
+  <header class="">
+    <!--Barra de navegación-->
+    <nav class="bg-gradient-to-r from-cyan-500 to-blue-500 w-full px-2 py-5 shadow-lg">
+      <div class="flex flex-auto justify-between gap-2 px-2 items-center">
+        <div class="text-white font-bold">
+          <!-- <img src="" alt=""> -->
+          <img src="https://seeklogo.com/images/U/unicauca-logo-87F35B8ABC-seeklogo.com.png" height="40" width="40">
+        </div>
+        <div class="flex flex-auto justify-end gap-4 text-lg text-white font-bold" sec:authorize="hasAnyRole('ADMIN','OPERARIO')">
+          <a th:href="@{/index}" class="hover:bg-sky-600 px-2 py-1 rounded" >Inicio</a>
+          <a th:href="@{/enterprises}" class="hover:bg-sky-600 px-2 py-1 rounded" >Control Empresas</a>
+          <a th:href="@{/employee}" class="hover:bg-sky-600 px-2 py-1 rounded" >Control Usuarios</a>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+<!--Tabla Empleados-->
+  <div sec:authorize="hasAnyRole('ADMIN', 'OPERARIO')">
+    <table class="bg-gray-200 px-4 py-4 my-0 mx-auto" Width=100%>
+      <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Empresa</th>
+        <th>rol</th>
+        <div sec:authorize="hasAnyRole('ADMIN')">
+          <th>Acciones</th>
+        </div>
+
+      </tr>
+      </thead>
+      <tbody align="center">
+      <tr th:each="employee : ${listEmployee}">
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.enterprise.name}"></td>
+        <td th:text="${employee.role}"></td>
+        <td>
+          <!--Opciones de control-->
+          <div sec:authorize="hasAnyRole('ADMIN')">
+              <span>
+                <!--Editar Empleado-->
+                <a th:href="@{/employee/editar/{id}(id=${employee.id})}" class="hover:bg-sky-600 px-2 py-1 rounded">Editar</a>
+                <!--Eliminar Empleado-->
+                <a th:href="@{/employee/delete/{id}(id=${employee.id})}" class="hover:bg-sky-600 px-2 py-1 rounded">Eliminar</a>
+              </span>
+          </div>
+
+
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+
+      </tfoot>
+    </table>
+  </div>
+</div>
+<!--Crear Empleado-->
+<br>
+<div class="row" sec:authorize="hasAnyRole('ADMIN')">
+  <div>
+    <a th:href="@{/employee/crear}" class="hover:bg-sky-600 px-2 py-1 rounded">Agregar Empleado</a>
+  </div>
+</div>
+
+
+</body>
+</html>

@@ -11,6 +11,7 @@ public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private String name;
     private String image;
     private String phone;
     private Date createdAt;
@@ -19,12 +20,13 @@ public class Profile {
     public Profile() {
     }
 
-    public Profile(long id, String image, String phone, Date createdAt, Date updatedAt) {
+    public Profile(long id, String image, String phone, Date createdAt, Date updatedAt, String name) {
         this.id = id;
         this.image = image;
         this.phone = phone;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.name=name;
     }
 
     public String getImage() {
@@ -65,5 +67,13 @@ public class Profile {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

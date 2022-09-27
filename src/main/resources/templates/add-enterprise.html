@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Crear Empleado</title>
+    <title>Crear Empresa</title>
 </head>
 <body>
 
@@ -30,52 +30,30 @@
         </nav>
     </header>
 
-    <form th:object="${employee}" method="post" th:action="@{/employee}">
+    <form th:object="${enterprise}" method="post" th:action="@{/enterprises}">
 
         <div class="">
             <label for="name">Nombre :</label>
             <input id="name" type="text" name="name" th:field="*{name}" placeholder="Digite Nombre: ">
         </div>
         <div class="">
-            <label for="email">Email:</label>
-            <input id="email" type="email" name="email" th:field="*{email}" placeholder="Digite Email: ">
+            <label for="address">Direccion:</label>
+            <input id="address" type="text" name="address" th:field="*{address}" placeholder="Digite Direccion: ">
         </div>
 
         <div class="">
-            <label for="password">Contraseña:</label>
-            <input id="password" type="password" name="password" th:field="*{password}" placeholder="Digite Contraseña: ">
-        </div>
-
-<!--        <div class="">-->
-<!--            <label for="email">Email:</label>-->
-<!--            <input id="email" name="email" th:field="*{email}">-->
-<!--        </div>-->
-
-        <div class="">
-            <label class="w-full font-bold my-2">Perfil:</label>
-            <select th:field="*{profile.id}" placeholder="Seleccione Empresa: ">
-                <option th:each="profile : ${listProfiles}" th:text="${profile.name}" th:value="${profile.id}" ></option>
-            </select>
+            <label for="document">Documento:</label>
+            <input id="document" name="document" th:field="*{document}" placeholder="Digite Documento: ">
         </div>
 
         <div class="">
-            <label class="w-full font-bold my-2">Empresa:</label>
-            <select th:field="*{enterprise.id}" placeholder="Seleccione Empresa: ">
-                <option th:each="enterprise : ${listEnterprises}" th:text="${enterprise.name}" th:value="${enterprise.id}" ></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Rol :</label>
-            <select th:field="*{role}" class="form-control" placeholder="Seleeccione Perfil">
-                <option th:each="role:${roles}"
-                        th:value="${role}" th:text="${role}"
-                >
-            </select>
+            <label for="phone">Telefono:</label>
+            <input id="phone" name="phone" th:field="*{phone}" placeholder="Digite telefono: ">
         </div>
 
         <div class="my-2">
             <button type="submit">
-                Crear Empleado
+                Crear Empresa
             </button>
 
         </div>

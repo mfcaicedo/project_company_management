@@ -24,7 +24,8 @@ public class TransactionImplService implements ITransactionService{
     }
 
     @Override
-    public float totalAmount(Long id) {
+    public Long totalAmount(Long id) {
+
         return repositoryTransaction.totalAmount(id);
     }
 
@@ -46,6 +47,11 @@ public class TransactionImplService implements ITransactionService{
     @Override
     public Transaction update(Long id, Transaction transaction) {
         return null;
+    }
+
+    @Override
+    public Transaction update(Transaction transaction) {
+        return repositoryTransaction.save(transaction);
     }
 
     @Override

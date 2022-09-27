@@ -11,7 +11,7 @@ public interface ITransactionService {
     public List<Transaction> findAllByEnterprise(Long id);
 
     //Obtener total monto de movimientos de una empresa
-    public float totalAmount(Long id);
+    public Long totalAmount(Long id);
 
     /**
      * Listar todas las Transaction
@@ -41,6 +41,8 @@ public interface ITransactionService {
      * @return Empresa con los datos actualizados
      */
     public Transaction update(Long id, Transaction transaction);
+
+    public Transaction update (Transaction transaction);
 
     public Transaction updateTransactionById(Long id, Long idTransaction, Transaction transaction);
     /**

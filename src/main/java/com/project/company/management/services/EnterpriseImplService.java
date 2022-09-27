@@ -68,6 +68,12 @@ public class EnterpriseImplService implements IEnterpriseService{
         enterprise1.setPhone(enterprise.getPhone());
         return enterpriseDao.save(enterprise1);
     }
+
+    @Override
+    public Enterprise update(Enterprise enterprise) {
+        return enterpriseDao.save(enterprise);
+    }
+
     /**
      * Eliminar una empresa con id
      * @param id identificador de la empresa a eliminar
