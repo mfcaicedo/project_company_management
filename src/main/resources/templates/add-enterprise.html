@@ -11,7 +11,6 @@
 <body>
 
 <div sec:authorize="isAuthenticated()">
-
     <header class="">
         <!--Barra de navegación-->
         <nav class="bg-gradient-to-r from-cyan-500 to-blue-500 w-full px-2 py-5 shadow-lg">
@@ -25,42 +24,48 @@
                     <a th:href="@{/enterprises}" class="hover:bg-sky-600 px-2 py-1 rounded" >Control Empresas</a>
                     <a th:href="@{/employee}" class="hover:bg-sky-600 px-2 py-1 rounded" >Control Usuarios</a>
                 </div>
-
             </div>
         </nav>
     </header>
-
     <form th:object="${enterprise}" method="post" th:action="@{/enterprises}">
-
-        <div class="">
-            <label for="name">Nombre :</label>
-            <input id="name" type="text" name="name" th:field="*{name}" placeholder="Digite Nombre: ">
+        <div class="w-1/2 my-0 mx-auto pt-5 border border-gray-100 shadow-2xl p-5 rounded">
+            <div class="flex flex-col">
+                <label for="name" class="w-full font-bold">Nombre :</label>
+                <input id="name"
+                       type="text"
+                       name="name"
+                       required
+                       class="px-1 py-2 mb-2 border border-gray-300 focus:border-gray-400 w-full rounded"
+                       th:field="*{name}" placeholder="Digite nombre">
+            </div>
+            <div class="flex flex-col">
+                <label for="address"  class="w-full font-bold">Direccion:</label>
+                <input id="address" type="text"
+                       required
+                       class="px-1 py-2 border mb-2 border-gray-300 focus:border-gray-400"
+                       name="address" th:field="*{address}" placeholder="Digite dirección ">
+            </div>
+            <div class="">
+                <label for="document"  class="w-full font-bold">Documento:</label>
+                <input id="document" name="document"
+                       required
+                       class="px-1 py-2 border mb-2 border-gray-300 focus:border-gray-400 w-full"
+                       th:field="*{document}" placeholder="Digite Documento ">
+            </div>
+            <div class="">
+                <label for="phone"  class="w-full font-bold">Telefono:</label>
+                <input id="phone" name="phone"
+                       required
+                       class="px-1 py-2 border mb-2 border-gray-300 focus:border-gray-400 w-full"
+                       th:field="*{phone}" placeholder="Digite teléfono ">
+            </div>
+            <div class="my-2">
+                <button type="submit" class="font-bold text-white px-4 py-3 bg-green-500 hover:bg-green-600 focus:outline-none rounded">
+                    Crear Empresa
+                </button>
+            </div>
         </div>
-        <div class="">
-            <label for="address">Direccion:</label>
-            <input id="address" type="text" name="address" th:field="*{address}" placeholder="Digite Direccion: ">
-        </div>
-
-        <div class="">
-            <label for="document">Documento:</label>
-            <input id="document" name="document" th:field="*{document}" placeholder="Digite Documento: ">
-        </div>
-
-        <div class="">
-            <label for="phone">Telefono:</label>
-            <input id="phone" name="phone" th:field="*{phone}" placeholder="Digite telefono: ">
-        </div>
-
-        <div class="my-2">
-            <button type="submit">
-                Crear Empresa
-            </button>
-
-        </div>
-
     </form>
-
 </div>
-
 </body>
 </html>

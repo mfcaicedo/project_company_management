@@ -29,59 +29,58 @@
             </div>
         </nav>
     </header>
-
     <form th:object="${employee}" method="post" th:action="@{/employee}">
-
-        <div class="">
-            <label for="name">Nombre :</label>
-            <input id="name" type="text" name="name" th:field="*{name}" placeholder="Digite Nombre: ">
+        <div class="w-1/2 my-0 mx-auto pt-5 border border-gray-100 shadow-2xl p-5 rounded">
+            <div class="flex flex-col">
+                <label for="name">Nombre:</label>
+                <input id="name" type="text"
+                       class="px-1 py-2 mb-2 border border-gray-300 focus:border-gray-400 w-full rounded"
+                       name="name" th:field="*{name}" placeholder="Tu nombre ">
+            </div>
+            <div class="flex flex-col">
+                <label for="email">Email:</label>
+                <input id="email" type="email"
+                       class="px-1 py-2 mb-2 border border-gray-300 focus:border-gray-400 w-full rounded"
+                       name="email" th:field="*{email}" placeholder="Tu email ">
+            </div>
+            <div class="flex flex-col">
+                <label for="password">Contraseña:</label>
+                <input id="password" type="password"
+                       class="px-1 py-2 mb-2 border border-gray-300 focus:border-gray-400 w-full rounded"
+                       name="password" th:field="*{password}" placeholder="Tu password ">
+            </div>
+            <div class="flex flex-col">
+                <label class="w-full font-bold my-2">Perfil:</label>
+                <select th:field="*{profile.id}"
+                        class="px-1 py-2 mb-2 border border-gray-300 focus:border-gray-400 w-full rounded"
+                        placeholder="Seleccione Empresa: ">
+                    <option th:each="profile : ${listProfiles}" th:text="${profile.name}" th:value="${profile.id}" ></option>
+                </select>
+            </div>
+            <div class="flex flex-col">
+                <label class="w-full font-bold my-2">Empresa:</label>
+                <select th:field="*{enterprise.id}"
+                        class="px-1 py-2 mb-2 border border-gray-300 focus:border-gray-400 w-full rounded"
+                        placeholder="Seleccione Empresa: ">
+                    <option th:each="enterprise : ${listEnterprises}" th:text="${enterprise.name}" th:value="${enterprise.id}" ></option>
+                </select>
+            </div>
+            <div class="form-group flex flex-col">
+                <label>Rol :</label>
+                <select th:field="*{role}"
+                        class="px-1 py-2 mb-2 border border-gray-300 focus:border-gray-400 w-full rounded" placeholder="Seleeccione Perfil">
+                    <option th:each="role:${roles}"
+                            th:value="${role}" th:text="${role}"
+                    >
+                </select>
+            </div>
+            <div class="py-2">
+                <button type="submit" class="font-bold text-white px-4 py-3 bg-green-500 hover:bg-green-600 focus:outline-none rounded">
+                    Crear Empleado
+                </button>
+            </div>
         </div>
-        <div class="">
-            <label for="email">Email:</label>
-            <input id="email" type="email" name="email" th:field="*{email}" placeholder="Digite Email: ">
-        </div>
-
-        <div class="">
-            <label for="password">Contraseña:</label>
-            <input id="password" type="password" name="password" th:field="*{password}" placeholder="Digite Contraseña: ">
-        </div>
-
-<!--        <div class="">-->
-<!--            <label for="email">Email:</label>-->
-<!--            <input id="email" name="email" th:field="*{email}">-->
-<!--        </div>-->
-
-        <div class="">
-            <label class="w-full font-bold my-2">Perfil:</label>
-            <select th:field="*{profile.id}" placeholder="Seleccione Empresa: ">
-                <option th:each="profile : ${listProfiles}" th:text="${profile.name}" th:value="${profile.id}" ></option>
-            </select>
-        </div>
-
-        <div class="">
-            <label class="w-full font-bold my-2">Empresa:</label>
-            <select th:field="*{enterprise.id}" placeholder="Seleccione Empresa: ">
-                <option th:each="enterprise : ${listEnterprises}" th:text="${enterprise.name}" th:value="${enterprise.id}" ></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Rol :</label>
-            <select th:field="*{role}" class="form-control" placeholder="Seleeccione Perfil">
-                <option th:each="role:${roles}"
-                        th:value="${role}" th:text="${role}"
-                >
-            </select>
-        </div>
-
-        <div class="my-2">
-            <button type="submit">
-                Crear Empleado
-            </button>
-
-        </div>
-
     </form>
-
 </div>
 
 </body>

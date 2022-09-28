@@ -24,26 +24,33 @@
           <a th:href="@{/enterprises}" class="hover:bg-sky-600 px-2 py-1 rounded" >Control Empresas</a>
           <a th:href="@{/employee}" class="hover:bg-sky-600 px-2 py-1 rounded" >Control Usuarios</a>
         </div>
-
       </div>
     </nav>
   </header>
 <!--Tabla Empleados-->
-  <div sec:authorize="hasAnyRole('ADMIN', 'OPERARIO')">
-    <table class="bg-gray-200 px-4 py-4 my-0 mx-auto" Width=100%>
-      <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Email</th>
-        <th>Empresa</th>
-        <th>rol</th>
+  <div sec:authorize="hasAnyRole('ADMIN', 'OPERARIO')" class="w-full pl-4 pr-4 py-5 pb-5 w-11/12 mx-auto my-0">
+    <div class="flex flex-auto justify-end w-full mb-3">
+      <div class="" sec:authorize="hasAnyRole('ADMIN')">
+        <div class="flex flex-auto items-center text-center content-center">
+          <a th:href="@{/employee/crear}" class="bg-green-500 hover:bg-green-600 px-2 pt-1 pb-2 text-white font-bold rounded">Agregar Empleado</a>
+        </div>
+      </div>
+    </div>
+
+    <table class="bg-gray-200 px-4 py-4 my-0 mx-auto w-full text-center">
+      <thead class="py-4">
+      <tr class="bg-sky-700 my-2 py-4 rounded-t">
+        <th class="uppercase text-white py-3">Nombre</th>
+        <th class="uppercase text-white">Email</th>
+        <th class="uppercase text-white">Empresa</th>
+        <th class="uppercase text-white">rol</th>
         <div sec:authorize="hasAnyRole('ADMIN')">
-          <th>Acciones</th>
+          <th class="uppercase text-white">Acciones</th>
         </div>
 
       </tr>
       </thead>
-      <tbody align="center">
+      <tbody class="text-base">
       <tr th:each="employee : ${listEmployee}">
         <td th:text="${employee.name}"></td>
         <td th:text="${employee.email}"></td>
@@ -51,33 +58,19 @@
         <td th:text="${employee.role}"></td>
         <td>
           <!--Opciones de control-->
-          <div sec:authorize="hasAnyRole('ADMIN')">
-              <span>
+          <div sec:authorize="hasAnyRole('ADMIN')" class="flex flex-auto justify-center gap-2 items-center content-center my-2">
                 <!--Editar Empleado-->
-                <a th:href="@{/employee/editar/{id}(id=${employee.id})}" class="hover:bg-sky-600 px-2 py-1 rounded">Editar</a>
+                <a th:href="@{/employee/editar/{id}(id=${employee.id})}" class="bg-sky-500 hover:bg-sky-600 text-white px-2 py-1 rounded">Editar</a>
                 <!--Eliminar Empleado-->
-                <a th:href="@{/employee/delete/{id}(id=${employee.id})}" class="hover:bg-sky-600 px-2 py-1 rounded">Eliminar</a>
-              </span>
+                <a th:href="@{/employee/delete/{id}(id=${employee.id})}" class="bg-red-600 hover:bg-red-700 px-2 py-1 text-white rounded">Eliminar</a>
           </div>
-
-
         </td>
       </tr>
       </tbody>
       <tfoot>
-
       </tfoot>
     </table>
   </div>
 </div>
-<!--Crear Empleado-->
-<br>
-<div class="row" sec:authorize="hasAnyRole('ADMIN')">
-  <div>
-    <a th:href="@{/employee/crear}" class="hover:bg-sky-600 px-2 py-1 rounded">Agregar Empleado</a>
-  </div>
-</div>
-
-
 </body>
 </html>

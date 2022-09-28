@@ -16,7 +16,6 @@ public interface IEnterpriseService {
      * @return
      */
     public List<Enterprise> findAll();
-
     /**
      * Encontrar Empresa por id
      *
@@ -24,14 +23,12 @@ public interface IEnterpriseService {
      * @return
      */
     public Enterprise findById(Long id);
-
     /**
      * Crear una empresa
      * @param enterprise
      * @return
      */
     public Enterprise create(Enterprise enterprise);
-
     /**}
      * Actualizar una empresa con id
      * @param id identificador de la empresa a actualizar
@@ -39,9 +36,7 @@ public interface IEnterpriseService {
      * @return Empresa con los datos actualizados
      */
     public Enterprise update(Long id, Enterprise enterprise);
-
     public Enterprise update (Enterprise enterprise);
-
     /**
      * Eliminar una Empresa con id
      * @param id identificador de la empresa a eliminar

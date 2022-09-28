@@ -10,7 +10,6 @@ public interface IEmployeeService {
      * @return
      */
     public List<Employee> findAll();
-
     /**
      * Encontrar Employee por id
      *
@@ -18,14 +17,12 @@ public interface IEmployeeService {
      * @return
      */
     public Employee findById(Long id);
-
     /**
      * Crear un empleado
      * @param employee
      * @return
      */
     public Employee create(Employee employee);
-
     /**}
      * Actualizar una employee con id
      * @param id identificador de la empresa a actualizar
